@@ -13,9 +13,10 @@
  * @param command [in/out] コマンド文字列
  * @param list [out] スペース文字で分割後の文字列リスト
  * @param max [in] listの配列最大要素数
+ * @param delim [in] 区切り文字(デフォルト " ")
  * @return 分割要素数。分割できない場合は 0 を返却
  */
-int split(char* command, char* list[], int max) {
+int split(char* command, char* list[], int max, const char* delim) {
 
 	int index = 0;
 
@@ -30,7 +31,7 @@ int split(char* command, char* list[], int max) {
 
 	// スペース文字で分割した文字列を listに設定
 	index = 0;
-	for (char* space = strtok(command, " "); space != NULL && index < max; space = strtok(NULL, " ")) {
+	for (char* space = strtok(command, delim); space != NULL && index < max; space = strtok(NULL, delim)) {
 		list[index++] = space;
 	}
 
